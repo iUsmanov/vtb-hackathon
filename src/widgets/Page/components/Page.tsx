@@ -33,6 +33,7 @@ export const Page = (props: PageProps) => {
 
 	useEffect(() => {
 		wrapperRef.current.scrollTop = scrollPosition;
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const onScroll = useThrottle((e: UIEvent<HTMLDivElement>) => {

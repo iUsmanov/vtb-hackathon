@@ -13,6 +13,7 @@ import { RootLayout } from '@/app/RootLayout';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 import { RequireAuth } from '../components/RequireAuth';
 import { ForbiddenPage } from '@/pages/ForbiddenPage';
+import { RequireRoles } from '../components/RequireRoles';
 
 const routeConfig: Record<AppRoutes, AppRouteObject> = {
 	main: {
@@ -39,10 +40,10 @@ export const routes = Object.values(routeConfig).map((route) => {
 		route.element = <RequireAuth>{routeElement as JSX.Element}</RequireAuth>;
 	}
 
-	// if (route.roles) {
-	// 	const routeElement = route.element;
-	// 	route.element = <RequireRoles roles={route.roles}>{routeElement as JSX.Element}</RequireRoles>;
-	// }
+	if (route.roles) {
+		const routeElement = route.element;
+		route.element = <RequireRoles roles={route.roles}>{routeElement as JSX.Element}</RequireRoles>;
+	}
 
 	return route;
 });

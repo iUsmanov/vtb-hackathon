@@ -3,9 +3,10 @@ import { AnyAction, CombinedState, Reducer, ReducersMapObject } from '@reduxjs/t
 import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 import { UISchema } from '@/widgets/Page';
 import { rtkApi } from '@/shared/api/rtkApi';
+import { UserSchema } from '@/entities/User';
 
 export interface StateSchema {
-	// user: UserSchema;
+	user: UserSchema;
 	ui: UISchema;
 	[rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
 

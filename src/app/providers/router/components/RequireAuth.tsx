@@ -1,4 +1,4 @@
-// import { getUserAuthData } from '@/entities/User';
+import { getUserAuthData } from '@/entities/User';
 import { getRouteForbidden } from '@/shared/const/router';
 import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
@@ -9,12 +9,12 @@ interface RequireAuthProps {
 
 export const RequireAuth = (props: RequireAuthProps) => {
 	const { children } = props;
-	// const isAuth = useSelector(getUserAuthData);
+	const isAuth = useSelector(getUserAuthData);
 	const location = useLocation();
 
-	// if (!isAuth) {
-	// 	return <Navigate to={getRouteForbidden()} state={{ from: location }} replace />;
-	// }
+	if (!isAuth) {
+		return <Navigate to={getRouteForbidden()} state={{ from: location }} replace />;
+	}
 
 	return children;
 };
